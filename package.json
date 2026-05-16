@@ -1,0 +1,15 @@
+{
+  "name": "bookpress-demo",
+  "version": "1.0.0",
+  "description": "BookPress — démonstration de la base de données relationnelle",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "setup": "node db/setup.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.3.1"
+  }
+}
