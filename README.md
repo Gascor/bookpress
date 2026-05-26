@@ -19,6 +19,8 @@ cp .env.example .env
 npm run setup
 npm start
 ```
+**Note : npm start sert à lancer le projet. Le SGBD est MySQL 8**
+**Note 2 : Liens vers la Présentation vidéo : https://www.youtube.com/watch?v=CEqawAO6lwg**
 
 ## Variables d'environnement
 
