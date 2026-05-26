@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookPress Admin - Utilisateurs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin-users.css">
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Gestion des utilisateurs</h1>
+      <p>Creation et attribution des roles client / auteur / editeur.</p>
+    </div>
+    <div class="top-actions">
+      <a href="/">Dashboard</a>
+      <button id="logout-btn" type="button">Se deconnecter</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="users-panel">
+      <div class="panel-head">
+        <h2>Utilisateurs</h2>
+        <button id="refresh-btn" type="button">Rafraichir</button>
+      </div>
+      <div class="table-wrap">
+        <table id="users-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nom</th>
+              <th>Email</th>
+              <th>Roles</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="form-panel">
+      <h2 id="form-title">Nouvel utilisateur</h2>
+      <form id="user-form">
+        <input id="user-id" type="hidden">
+
+        <div class="field-grid">
+          <label>
+            <span>Prenom</span>
+            <input id="prenom" type="text" required>
+          </label>
+          <label>
+            <span>Nom</span>
+            <input id="nom" type="text" required>
+          </label>
+          <label>
+            <span>Email</span>
+            <input id="email" type="email" required>
+          </label>
+          <label>
+            <span>Mot de passe</span>
+            <input id="password" type="password">
+          </label>
+          <label>
+            <span>Telephone</span>
+            <input id="telephone" type="tel">
+          </label>
+          <label>
+            <span>Adresse</span>
+            <input id="adresse" type="text">
+          </label>
+        </div>
+
+        <fieldset class="roles-box">
+          <legend>Roles</legend>
+          <label><input id="role-client" type="checkbox" checked> Client</label>
+          <label><input id="role-auteur" type="checkbox"> Auteur</label>
+          <label><input id="role-editeur" type="checkbox"> Editeur</label>
+        </fieldset>
+
+        <div class="details-block" id="client-details">
+          <label>
+            <span>Adresse livraison (client)</span>
+            <input id="adresse-livraison" type="text">
+          </label>
+        </div>
+
+        <div class="details-block hidden" id="auteur-details">
+          <label>
+            <span>IBAN (auteur)</span>
+            <input id="iban" type="text">
+          </label>
+          <label>
+            <span>Bio (auteur)</span>
+            <textarea id="bio" rows="2"></textarea>
+          </label>
+        </div>
+
+        <div class="details-block hidden" id="editeur-details">
+          <label>
+            <span>SIRET (editeur)</span>
+            <input id="siret" type="text">
+          </label>
+          <label>
+            <span>Nom maison (editeur)</span>
+            <input id="nom-maison" type="text">
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button id="save-btn" type="submit">Enregistrer</button>
+          <button id="reset-btn" type="button">Nouveau formulaire</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <section id="feedback" class="feedback" hidden></section>
+
+  <script src="/admin-users.js"></script>
+</body>
+</html>

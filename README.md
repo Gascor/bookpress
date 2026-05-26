@@ -1,44 +1,84 @@
-# BookPress — Démonstration BDD
+﻿# BookPress - Demonstration BDD
 
-Application web de démonstration du schéma relationnel BookPress.
-Stack : Node.js + Express + MySQL
+Application web Node.js + Express + MySQL avec:
+- back-office admin (dashboard)
+- boutique publique (`/shop`)
+- authentification (register/login/logout)
+- gestion de roles (`client`, `auteur`, `editeur`) par admin
 
-## Prérequis
+## Prerequis
 
 - Node.js 18+
-- MySQL 8+ en cours d'exécution
+- MySQL 8+
 
 ## Installation
 
 ```bash
-# 1. Installer les dépendances
 npm install
-
-# 2. Configurer la base de données
 cp .env.example .env
-# Éditer .env avec vos identifiants MySQL
-
-# 3. Créer le schéma et insérer les données
 npm run setup
-
-# 4. Lancer le serveur
 npm start
 ```
 
-Ouvrir http://localhost:3000
+## Variables d'environnement
 
-## Pages
+Fichier `.env`:
 
-| Page               | Description                                          |
-|--------------------|------------------------------------------------------|
-| Tableau de bord    | KPIs + graphiques CA par genre et ventes/semaine     |
-| Catalogue livres   | 20 livres filtrables par genre                       |
-| Auteurs            | Classement par revenus avec biographies              |
-| Précommandes       | 50 commandes filtrables par statut                   |
-| Batches impression | 8 batches avec détails (titres, exemplaires)         |
-| Explorateur SQL    | Console SELECT live avec requêtes prédéfinies        |
+- `DB_HOST`, `DB_PORT`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`
+- `PORT`
+- `JWT_SECRET`, `JWT_EXPIRES`
+- `ADMIN_EMAIL`, `ADMIN_PASSWORD` (creation automatique du compte admin si absent)
+- `ADMIN_EMAILS` (liste d'emails admin, separes par virgules)
 
-## SGBD
+Sans configuration explicite, un compte admin par defaut est bootstrappe:
+- email: `admin@bookpress.local`
+- mot de passe: `ChangeMe123!`
 
-MySQL 8. Le fichier `db/schema.sql` contient le schéma complet.
-Le fichier `db/seed.sql` contient les données d'exemple.
+## URLs
+
+- Admin dashboard: `http://localhost:3000/`
+- Login admin: `http://localhost:3000/admin-login`
+- Gestion utilisateurs/roles: `http://localhost:3000/admin/users`
+- Shop public: `http://localhost:3000/shop`
+
+## Fonctionnalites
+
+### Shop public
+
+- Catalogue livres (recherche + filtre genre)
+- Fiche livre
+- Panier multi-livres (`localStorage`)
+- Creation de compte client
+- Connexion / deconnexion
+- Checkout authentifie (`POST /api/precommandes`)
+
+### Admin
+
+- Dashboard (KPIs, tableaux, stats, SQL explorer)
+- Toutes les routes admin protegees (auth admin)
+- CRUD utilisateur orientee roles:
+  - creation utilisateur avec roles
+  - edition utilisateur + changement de roles
+  - details role-specifiques (`iban`, `siret`, `nom_maison`, `adresse_livraison`)
+
+## API principale ajoutee
+
+### Auth
+
+- `GET /api/auth/me`
+- `POST /api/auth/register`
+- `POST /api/auth/login`
+- `POST /api/auth/logout`
+
+### Shop
+
+- `GET /api/shop/livres`
+- `GET /api/shop/livres/:idLivre`
+- `GET /api/shop/genres`
+- `POST /api/precommandes` (requiert utilisateur connecte avec role client)
+
+### Admin users
+
+- `GET /api/admin/users` (admin)
+- `POST /api/admin/users` (admin)
+- `PUT /api/admin/users/:idUtilisateur/roles` (admin)

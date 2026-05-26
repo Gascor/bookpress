@@ -1,0 +1,278 @@
+﻿:root {
+  --bg: #0f1014;
+  --bg2: #181b21;
+  --line: #2d3139;
+  --text: #e6ebf2;
+  --muted: #9ea8b6;
+  --accent: #c9a86b;
+  --green: #60b18d;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: radial-gradient(circle at 10% 10%, #223241, transparent 40%), var(--bg);
+  font-family: 'DM Sans', sans-serif;
+}
+
+.topbar {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 26px 20px 10px;
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-family: 'DM Serif Display', serif;
+  font-size: 42px;
+  line-height: 1.05;
+}
+
+.topbar p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.top-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.top-actions a,
+.top-actions button {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 12px;
+  color: var(--text);
+  text-decoration: none;
+  background: #1a1e25;
+  cursor: pointer;
+  font: inherit;
+}
+
+.layout {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 12px 20px 20px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 16px;
+}
+
+.users-panel,
+.form-panel {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: rgba(24, 27, 33, 0.95);
+  padding: 14px;
+}
+
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.panel-head h2,
+.form-panel h2 {
+  margin: 0;
+  font-size: 22px;
+  font-family: 'DM Serif Display', serif;
+}
+
+.panel-head button,
+#save-btn,
+#reset-btn,
+#refresh-btn {
+  border: 1px solid var(--line);
+  background: #1d2229;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font: inherit;
+}
+
+#save-btn {
+  background: var(--accent);
+  border: none;
+  color: #1a1204;
+  font-weight: 700;
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 70vh;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+}
+
+#users-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+#users-table th,
+#users-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+#users-table th {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.row-actions button {
+  border: 1px solid var(--line);
+  background: #202631;
+  color: var(--text);
+  border-radius: 999px;
+  padding: 4px 9px;
+  cursor: pointer;
+}
+
+.badges {
+  display: inline-flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 2px 8px;
+  font-size: 11px;
+  background: #2b313b;
+  border: 1px solid #3a424f;
+}
+
+.badge.admin {
+  background: rgba(201, 168, 107, 0.2);
+  border-color: rgba(201, 168, 107, 0.5);
+  color: var(--accent);
+}
+
+.badge.client {
+  color: var(--green);
+}
+
+#user-form {
+  display: grid;
+  gap: 12px;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+label {
+  display: grid;
+  gap: 6px;
+}
+
+label span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+input,
+textarea {
+  border: 1px solid var(--line);
+  background: #12161c;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid rgba(201, 168, 107, 0.35);
+  border-color: var(--accent);
+}
+
+.roles-box {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.roles-box legend {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.roles-box label {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.details-block {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px;
+  display: grid;
+  gap: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.feedback {
+  max-width: 1300px;
+  margin: 0 auto 20px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(96, 177, 141, 0.14);
+  color: var(--text);
+  padding: 11px 14px;
+}
+
+.feedback.error {
+  background: rgba(149, 73, 73, 0.16);
+  border-color: #924949;
+}
+
+@media (max-width: 1000px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .topbar h1 {
+    font-size: 32px;
+  }
+
+  .field-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BookPress Admin Login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin-login.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card">
+      <h1>Admin BookPress</h1>
+      <p>Connexion requise pour acceder au dashboard et a la gestion des roles.</p>
+
+      <form id="login-form" class="login-form">
+        <label>
+          <span>Email</span>
+          <input id="email" type="email" required>
+        </label>
+        <label>
+          <span>Mot de passe</span>
+          <input id="password" type="password" required>
+        </label>
+        <button id="submit" type="submit">Se connecter</button>
+      </form>
+
+      <div id="feedback" class="feedback" hidden></div>
+      <a class="shop-link" href="/shop">Aller au shop public</a>
+    </section>
+  </main>
+
+  <script src="/admin-login.js"></script>
+</body>
+</html>

@@ -2,6 +2,7 @@
 const pages = {};
 document.querySelectorAll('.page').forEach(p => pages[p.id.replace('page-','')] = p);
 const links = document.querySelectorAll('.nav-link');
+const logoutBtn = document.getElementById('admin-logout-btn');
 
 function showPage(name) {
   Object.values(pages).forEach(p => p.classList.remove('active'));
@@ -11,15 +12,38 @@ function showPage(name) {
   loaders[name]?.();
 }
 
-links.forEach(l => l.addEventListener('click', e => {
-  e.preventDefault();
-  showPage(l.dataset.page);
-}));
+links.forEach(l => {
+  if (!l.dataset.page) return;
+  l.addEventListener('click', e => {
+    e.preventDefault();
+    showPage(l.dataset.page);
+  });
+});
+
+if (logoutBtn) {
+  logoutBtn.addEventListener('click', async () => {
+    try {
+      await fetch('/api/auth/logout', { method: 'POST' });
+    } catch (_) {
+      // noop
+    }
+    window.location.href = '/admin-login';
+  });
+}
 
 /* ── Fetch helper ───────────────────────────────────── */
 async function api(url) {
   const r = await fetch(url);
-  return r.json();
+  const data = await r.json();
+  if (!r.ok) {
+    if (r.status === 401 || r.status === 403) {
+      const next = encodeURIComponent(window.location.pathname || '/');
+      window.location.href = `/admin-login?next=${next}`;
+      throw new Error('Authentification admin requise.');
+    }
+    throw new Error(data?.error || `Erreur API (${r.status})`);
+  }
+  return data;
 }
 
 /* ── Formatters ─────────────────────────────────────── */

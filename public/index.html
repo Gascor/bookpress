@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BookPress — Démonstration BDD</title>
+<title>BookPress â€” DÃ©monstration BDD</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/css/style.css">
@@ -16,17 +16,21 @@
     <span class="logo-mark">B</span>
     <span class="logo-text">BookPress</span>
   </div>
-  <div class="sidebar-subtitle">Démonstration BDD</div>
+  <div class="sidebar-subtitle">DÃ©monstration BDD</div>
   <ul class="nav-links">
-    <li><a href="#" class="nav-link active" data-page="dashboard"><span class="nav-icon">◈</span>Tableau de bord</a></li>
-    <li><a href="#" class="nav-link" data-page="livres"><span class="nav-icon">◻</span>Catalogue livres</a></li>
-    <li><a href="#" class="nav-link" data-page="auteurs"><span class="nav-icon">◉</span>Auteurs</a></li>
-    <li><a href="#" class="nav-link" data-page="commandes"><span class="nav-icon">◈</span>Précommandes</a></li>
-    <li><a href="#" class="nav-link" data-page="batches"><span class="nav-icon">◻</span>Batches impression</a></li>
-    <li><a href="#" class="nav-link" data-page="sql"><span class="nav-icon">◉</span>Explorateur SQL</a></li>
+    <li><a href="#" class="nav-link active" data-page="dashboard"><span class="nav-icon">â—ˆ</span>Tableau de bord</a></li>
+    <li><a href="#" class="nav-link" data-page="livres"><span class="nav-icon">â—»</span>Catalogue livres</a></li>
+    <li><a href="#" class="nav-link" data-page="auteurs"><span class="nav-icon">â—‰</span>Auteurs</a></li>
+    <li><a href="#" class="nav-link" data-page="commandes"><span class="nav-icon">â—ˆ</span>PrÃ©commandes</a></li>
+    <li><a href="#" class="nav-link" data-page="batches"><span class="nav-icon">â—»</span>Batches impression</a></li>
+    <li><a href="#" class="nav-link" data-page="sql"><span class="nav-icon">â—‰</span>Explorateur SQL</a></li>
+    <li><a href="/admin/users" class="nav-link"><span class="nav-icon">&#9670;</span>Utilisateurs</a></li>
   </ul>
+  <div class="sidebar-actions">
+    <button id="admin-logout-btn" type="button" class="sidebar-logout">Se dÃ©connecter</button>
+  </div>
   <div class="sidebar-schema">
-    <div class="schema-title">Schéma</div>
+    <div class="schema-title">SchÃ©ma</div>
     <div class="schema-tables">
       <span>UTILISATEUR</span><span>AUTEUR</span><span>EDITEUR</span>
       <span>CLIENT</span><span>LIVRE</span><span>CONTRAT</span>
@@ -46,12 +50,12 @@
       <p class="page-subtitle">Vue d'ensemble de la plateforme BookPress</p>
     </header>
     <div class="kpi-grid" id="kpi-grid">
-      <div class="kpi-card" id="kpi-livres"><div class="kpi-val">—</div><div class="kpi-label">Livres</div></div>
-      <div class="kpi-card" id="kpi-auteurs"><div class="kpi-val">—</div><div class="kpi-label">Auteurs</div></div>
-      <div class="kpi-card" id="kpi-clients"><div class="kpi-val">—</div><div class="kpi-label">Clients</div></div>
-      <div class="kpi-card accent" id="kpi-ca"><div class="kpi-val">—</div><div class="kpi-label">Chiffre d'affaires (€)</div></div>
-      <div class="kpi-card" id="kpi-cmds"><div class="kpi-val">—</div><div class="kpi-label">Précommandes</div></div>
-      <div class="kpi-card" id="kpi-batch"><div class="kpi-val">—</div><div class="kpi-label">Batches en cours</div></div>
+      <div class="kpi-card" id="kpi-livres"><div class="kpi-val">â€”</div><div class="kpi-label">Livres</div></div>
+      <div class="kpi-card" id="kpi-auteurs"><div class="kpi-val">â€”</div><div class="kpi-label">Auteurs</div></div>
+      <div class="kpi-card" id="kpi-clients"><div class="kpi-val">â€”</div><div class="kpi-label">Clients</div></div>
+      <div class="kpi-card accent" id="kpi-ca"><div class="kpi-val">â€”</div><div class="kpi-label">Chiffre d'affaires (â‚¬)</div></div>
+      <div class="kpi-card" id="kpi-cmds"><div class="kpi-val">â€”</div><div class="kpi-label">PrÃ©commandes</div></div>
+      <div class="kpi-card" id="kpi-batch"><div class="kpi-val">â€”</div><div class="kpi-label">Batches en cours</div></div>
     </div>
     <div class="charts-row">
       <div class="chart-card">
@@ -79,7 +83,7 @@
       <table class="data-table" id="table-livres">
         <thead><tr>
           <th>#</th><th>Titre</th><th>Genre</th><th>Auteur(s)</th>
-          <th>Éditeur</th><th>Prix</th><th>Précommandes</th>
+          <th>Ã‰diteur</th><th>Prix</th><th>PrÃ©commandes</th>
         </tr></thead>
         <tbody></tbody>
       </table>
@@ -90,7 +94,7 @@
   <section class="page" id="page-auteurs">
     <header class="page-header">
       <h1>Auteurs</h1>
-      <p class="page-subtitle">Classement par revenus générés</p>
+      <p class="page-subtitle">Classement par revenus gÃ©nÃ©rÃ©s</p>
     </header>
     <div class="cards-grid" id="auteurs-grid"></div>
   </section>
@@ -98,19 +102,19 @@
   <!-- COMMANDES -->
   <section class="page" id="page-commandes">
     <header class="page-header">
-      <h1>Précommandes</h1>
+      <h1>PrÃ©commandes</h1>
       <div class="filters">
         <button class="pill active" data-statut="">Toutes</button>
         <button class="pill" data-statut="en_attente">En attente</button>
-        <button class="pill" data-statut="confirmee">Confirmées</button>
-        <button class="pill" data-statut="expediee">Expédiées</button>
-        <button class="pill" data-statut="livree">Livrées</button>
+        <button class="pill" data-statut="confirmee">ConfirmÃ©es</button>
+        <button class="pill" data-statut="expediee">ExpÃ©diÃ©es</button>
+        <button class="pill" data-statut="livree">LivrÃ©es</button>
       </div>
     </header>
     <div class="table-wrap">
       <table class="data-table" id="table-commandes">
         <thead><tr>
-          <th>#</th><th>Client</th><th>Livre</th><th>Qté</th>
+          <th>#</th><th>Client</th><th>Livre</th><th>QtÃ©</th>
           <th>Date</th><th>Montant</th><th>Statut</th><th>Transporteur</th>
         </tr></thead>
         <tbody></tbody>
@@ -122,12 +126,12 @@
   <section class="page" id="page-batches">
     <header class="page-header">
       <h1>Batches d'impression</h1>
-      <p class="page-subtitle">Regroupement hebdomadaire des précommandes</p>
+      <p class="page-subtitle">Regroupement hebdomadaire des prÃ©commandes</p>
     </header>
     <div class="table-wrap">
       <table class="data-table" id="table-batches">
         <thead><tr>
-          <th>#</th><th>Date prévue</th><th>Statut</th>
+          <th>#</th><th>Date prÃ©vue</th><th>Statut</th>
           <th>Titres distincts</th><th>Total exemplaires</th>
         </tr></thead>
         <tbody></tbody>
@@ -139,19 +143,19 @@
   <section class="page" id="page-sql">
     <header class="page-header">
       <h1>Explorateur SQL</h1>
-      <p class="page-subtitle">Exécutez des requêtes SELECT sur la base bookpress</p>
+      <p class="page-subtitle">ExÃ©cutez des requÃªtes SELECT sur la base bookpress</p>
     </header>
     <div class="sql-presets">
       <span class="preset-label">Exemples :</span>
       <button class="preset" data-q="SELECT l.titre, COUNT(p.id_precommande) AS nb, SUM(v.montant_total) AS ca FROM LIVRE l LEFT JOIN PRECOMMANDE p ON p.id_livre=l.id_livre LEFT JOIN VENTE v ON v.id_precommande=p.id_precommande GROUP BY l.id_livre ORDER BY ca DESC LIMIT 10">Top 10 livres par CA</button>
       <button class="preset" data-q="SELECT CONCAT(u.prenom,' ',u.nom) AS auteur, SUM(v.montant_total * cr.pourcentage_auteur / 100) AS revenus FROM AUTEUR a JOIN UTILISATEUR u ON u.id_utilisateur=a.id_utilisateur JOIN CONTRAT_REMUNERATION cr ON cr.id_auteur=a.id_utilisateur JOIN PRECOMMANDE p ON p.id_livre=cr.id_livre JOIN VENTE v ON v.id_precommande=p.id_precommande GROUP BY a.id_utilisateur ORDER BY revenus DESC">Revenus auteurs</button>
-      <button class="preset" data-q="SELECT b.id_batch, b.date_prevue, b.statut, COUNT(DISTINCT lb.id_livre) titres, SUM(lb.quantite_totale) exemplaires FROM BATCH_IMPRESSION b LEFT JOIN LIGNE_BATCH lb ON lb.id_batch=b.id_batch GROUP BY b.id_batch">Détail batches</button>
-      <button class="preset" data-q="SELECT p.statut, COUNT(*) nb, SUM(l.prix_unitaire * p.quantite) montant FROM PRECOMMANDE p JOIN LIVRE l ON l.id_livre=p.id_livre GROUP BY p.statut">Statuts précommandes</button>
+      <button class="preset" data-q="SELECT b.id_batch, b.date_prevue, b.statut, COUNT(DISTINCT lb.id_livre) titres, SUM(lb.quantite_totale) exemplaires FROM BATCH_IMPRESSION b LEFT JOIN LIGNE_BATCH lb ON lb.id_batch=b.id_batch GROUP BY b.id_batch">DÃ©tail batches</button>
+      <button class="preset" data-q="SELECT p.statut, COUNT(*) nb, SUM(l.prix_unitaire * p.quantite) montant FROM PRECOMMANDE p JOIN LIVRE l ON l.id_livre=p.id_livre GROUP BY p.statut">Statuts prÃ©commandes</button>
       <button class="preset" data-q="SELECT t.nom, COUNT(e.id_precommande) livraisons FROM TRANSPORTEUR t LEFT JOIN EXPEDITION e ON e.id_transporteur=t.id_transporteur GROUP BY t.id_transporteur ORDER BY livraisons DESC">Transporteurs</button>
     </div>
     <div class="sql-editor-wrap">
       <textarea class="sql-editor" id="sql-editor" spellcheck="false" placeholder="SELECT * FROM LIVRE LIMIT 5"></textarea>
-      <button class="run-btn" id="run-btn">▶ Exécuter</button>
+      <button class="run-btn" id="run-btn">â–¶ ExÃ©cuter</button>
     </div>
     <div id="sql-error" class="sql-error hidden"></div>
     <div class="table-wrap" id="sql-result-wrap" style="display:none">
